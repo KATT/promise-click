@@ -1,0 +1,26 @@
+{
+  "name": "promise-click",
+  "title": "Promise Click",
+  "description": "Promise content of links before clicking",
+  "version": "0.1.0",
+  "homepage": "https://github.com/KATT/promise-click",
+  "author": {
+    "name": "Alexander Johansson",
+    "email": "me@axj.nu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/KATT/promise-click.git"
+  },
+  "bugs": "https://github.com/KATT/promise-click/issues",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/KATT/promise-click/blob/master/LICENSE-MIT"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.5"
+  },
+  "keywords": []
+}

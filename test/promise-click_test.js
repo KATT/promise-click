@@ -20,7 +20,7 @@
       throws(block, [expected], [message])
   */
 
-  module('jQuery#preload', {
+  module('jQuery#promiseClick', {
     // This will run before each test in this module.
     setup: function() {
       this.elems = $('#qunit-fixture').children();
@@ -30,7 +30,6 @@
   test('is chainable', function() {
     expect(1);
     // Not a bad test to run on collection methods.
-    strictEqual(this.elems.preloadClick(), this.elems, 'should be chainable');
+    strictEqual(this.elems.promiseClick(), this.elems, 'should be chainable');
   });
-
 }(jQuery));

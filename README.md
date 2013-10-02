@@ -1,25 +1,25 @@
-# Preload Click
+# Promise Click
 
 Preload content of links before clicking
 
 ## Getting Started
 Download the [production version][min] or the [development version][max].
 
-[min]: https://raw.github.com/KATT/preload-click/master/dist/preload-click.min.js
-[max]: https://raw.github.com/KATT/preload-click/master/dist/preload-click.js
+[min]: https://raw.github.com/KATT/promise-click/master/dist/promise-click.min.js
+[max]: https://raw.github.com/KATT/promise-click/master/dist/promise-click.js
 
 In your web page:
 
 ```html
 <script src="jquery.js"></script>
-<script src="dist/preload-click.min.js"></script>
+<script src="dist/promise-click.min.js"></script>
 <script>
 jQuery(function($) {
-  $(document).preloadClick('a.ajax', function(event, promise) {
+  $(document).on('promiseclick', 'a.ajax', function(event) {
 	  event.preventDefault();
 	  var $this = $(this);
 
-	  promise.done(function (data) {
+	  event.data.promise.done(function (data) {
 	    // do something with the data
 	  });
 	});
@@ -31,22 +31,25 @@ jQuery(function($) {
 _(Coming soon)_
 
 ## Examples
-See this [Code Pen](http://codepen.io/KATT/pen/jpntu).
+See [`demos/`](demos/index.html).
 
 ## Todo / wish list
 
-* Implement as a jQuery event, `jQuery.Event.promsieclick`
-* Ability to unbind
-* Implement / support [FastClick][fastclick]
 * Delay mouseover promise with X milliseconds
 * Options
 	* Mouseover delay
 	* Override promise generation
 	* Auto `preventDefault` on click
-* Clean-up interface (jQuery `.on()`-esque?)
 * Unit tests
 * Clean-up old promises
 * Prevent caching on rejected promises?
+
+### Implemented
+
+* Implement as a jQuery event, `jQuery.Event.promsieclick`
+* Ability to unbind
+* Support [FastClick][fastclick]
+* Clean-up interface (jQuery `.on()`-esque?)
 
 
 [fastclick]: https://github.com/Plaputta/jquery.event.special.fastclick

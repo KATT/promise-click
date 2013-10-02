@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Promise Click Demo</title>
+  <script src="../libs/jquery-loader.js"></script>
+
+  <script src="../src/promise-click.js"></script>
+  <style type="text/css">
+    html {
+     font: Helvetica, Arial, sans-serif;
+    }
+
+    blockquote {
+      font-style: italic;
+    }
+
+      blockquote.loading {
+
+        background-image: url('data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==');
+        background-repeat: no-repeat;
+        background-position: left;
+      }
+
+  </style>
+</head>
+<body>
+  <p>This <a href="http://codepen.io/KATT/pen/LGmnE.html" data-target="#content" id="hot">fast link</a> will preload the data from the <code>href</code> as soon as you mouseover it.</p>
+
+  <blockquote id="content">&nbsp;</blockquote>
+
+  <p>Compare it with this <a href="http://codepen.io/KATT/pen/LGmnE.html" data-target="#content2" id="cold">slow link</a> that uses a normal jQuery <code>$.get</code> when you click on it.</p>
+
+  <blockquote id="content2">&nbsp;</blockquote>
+
+
+  <p>The difference in speed would be much more prevalent if the target server responded slower<p>
+  <script type="text/javascript">
+
+    $('a#hot').on('promiseclick', function(event) {
+      event.preventDefault();
+      var promise = event.data.promise;
+      var $target = $($(this).data('target'));
+
+      $target.addClass('loading');
+
+      promise.done(function (data) {
+        $target.html(data);
+
+        $target.removeClass('loading');
+      });
+    });
+
+
+
+    $(document).on('click', 'a#cold', function(event, promise) {
+      event.preventDefault();
+      var promise = $.get($(this).attr('href'));
+      var $target = $($(this).data('target'));
+
+      $target.addClass('loading');
+
+      promise.done(function (data) {
+        $target.html(data);
+
+        $target.removeClass('loading');
+      });
+    });
+
+  </script>
+</body>
+</html>
