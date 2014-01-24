@@ -52,8 +52,8 @@
       $this.on('mouseover', mouseover);
       $this.on('mousedown touchstart', touchesBegan);
 
-      // if we have support for fastclick, use that
-      triggerType = ($.event.special.fastclick ? 'fastclick' : 'click');
+      // if we have support for vclick, use that
+      triggerType = ($.event.special.vclick ? 'vclick' : 'click');
 
       $this.on(triggerType, clicked);
     },

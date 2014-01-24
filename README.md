@@ -48,11 +48,11 @@ See [`demos/`](demos/index.html).
 
 * Implement as a jQuery event, `jQuery.Event.promsieclick`
 * Ability to unbind
-* Support [FastClick][fastclick]
+* Support [virtual mouse][vclick]
 * Clean-up interface (jQuery `.on()`-esque?)
 
 
-[fastclick]: https://github.com/Plaputta/jquery.event.special.fastclick
+[vclick]: http://api.jquerymobile.com/vclick/
 
 ## Release History
 _(Nothing yet)_
